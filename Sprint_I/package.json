@@ -49,6 +49,7 @@
     "!*/__tests__"
   ],
   "dependencies": {
+<<<<<<< HEAD
     "@loopback/authentication": "^8.0.0",
     "@loopback/boot": "^4.0.0",
     "@loopback/core": "^3.0.0",
@@ -60,6 +61,15 @@
     "crypto-js": "^4.1.1",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+=======
+    "@loopback/boot": "^3.4.4",
+    "@loopback/core": "^2.18.0",
+    "@loopback/repository": "^3.7.3",
+    "@loopback/rest": "^10.1.0",
+    "@loopback/rest-explorer": "^3.3.4",
+    "@loopback/service-proxy": "^3.2.4",
+    "express": "^4.17.1",
+>>>>>>> 8328ef33dd25b9e8137936ea2bd2092c03b0face
     "loopback-connector-mongodb": "^5.6.0",
     "mongodb": "^4.2.0",
     "node-fetch": "2.6",

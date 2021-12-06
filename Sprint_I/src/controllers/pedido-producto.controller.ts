@@ -3,7 +3,7 @@ import {
   CountSchema,
   Filter,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
   del,
@@ -13,11 +13,11 @@ import {
   param,
   patch,
   post,
-  requestBody,
+  requestBody
 } from '@loopback/rest';
 import {
   Pedido,
-  Producto,
+  Producto
 } from '../models';
 import {PedidoRepository} from '../repositories';
 
@@ -61,7 +61,6 @@ export class PedidoProductoController {
           schema: getModelSchemaRef(Producto, {
             title: 'NewProductoInPedido',
             exclude: ['id'],
-            optional: ['pedidoId']
           }),
         },
       },

@@ -20,3 +20,4 @@ export * from './detalle-pedido.controller';
 export * from './producto.controller';
 export * from './categoria.controller';
 export * from './tipo-mascota.controller';
+export * from './persona-pedido.controller';

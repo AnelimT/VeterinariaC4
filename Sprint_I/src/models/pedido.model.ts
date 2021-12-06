@@ -23,11 +23,7 @@ export class Pedido extends Entity {
   })
   direccion_pedido: string;
 
-  @property({
-    type: 'string',
-    required: true,
-  })
-  numero_guia: string;
+
 
   @property({
     type: 'number',
@@ -35,11 +31,6 @@ export class Pedido extends Entity {
   })
   costo_envio: number;
 
-  @property({
-    type: 'number',
-    required: true,
-  })
-  total: number;
 
   @property({
     type: 'string',
@@ -58,6 +49,11 @@ export class Pedido extends Entity {
 
   @hasMany(() => Producto)
   productos: Producto[];
+
+  @property({
+    type: 'string',
+  })
+  personaId?: string;
 
   constructor(data?: Partial<Pedido>) {
     super(data);

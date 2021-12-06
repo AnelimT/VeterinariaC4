@@ -3,7 +3,7 @@ import {
   CountSchema,
   Filter,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
   del,
@@ -13,11 +13,10 @@ import {
   param,
   patch,
   post,
-  requestBody,
+  requestBody
 } from '@loopback/rest';
 import {
-  Petshop,
-  Cliente,
+  Cliente, Petshop
 } from '../models';
 import {PetshopRepository} from '../repositories';
 
@@ -61,7 +60,6 @@ export class PetshopClienteController {
           schema: getModelSchemaRef(Cliente, {
             title: 'NewClienteInPetshop',
             exclude: ['id'],
-            optional: ['petshopId']
           }),
         },
       },

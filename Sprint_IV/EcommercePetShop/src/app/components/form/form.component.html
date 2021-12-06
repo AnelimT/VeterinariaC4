@@ -1,0 +1,180 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+
+    <div class="body">
+        <div class="container-fluid pt-4 pb-2">
+                <div class="container shadow justify-content-center mb-4 form">
+                <div class="row justify-content-center mb-2 head-form">
+                    <div class="col-2 mb-2 text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="" class="mt-4 bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                        </svg>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col text-center">
+                            <h2 class="">Registro</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
+                    <div class="col">
+                            <input
+                                type="text"
+                                formControlName="user_name"
+                                class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f['user_name'].errors}"
+                                placeholder="Nombre"
+                            />
+                            <div *ngIf="submitted && f['user_name'].errors" class="invalid-feedback">
+                                <div *ngIf="f['user_name'].errors['required']">Nombre es requerido</div>
+                                <div *ngIf="f['user_name'].errors['minlength']">El nombre debe de contener mas de 3 caracteres</div>
+                            </div>
+                    </div>
+                    <div class="col">
+                        <input
+                            type="text"
+                            formControlName="last_name"
+                            class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['last_name'].errors}"
+                            placeholder="Apellidos"
+                        />
+                        <div *ngIf="submitted && f['last_name'].errors" class="invalid-feedback">
+                            <div *ngIf="f['last_name'].errors['required']">Apellido es requerido</div>
+                            <div *ngIf="f['last_name'].errors['minlength']">El apellido debe de contener mas de 3 caracteres</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
+                    <div class="col">
+                        <select class="form-select" aria-label="Default select example" formControlName="tipo_documento"
+                        [ngClass]="{ 'is-invalid': submitted && f['tipo_documento'].errors}">
+                            <option label="Tipo Documento"></option>
+                            <option value="Cédula">Cédula</option>
+                            <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                            <option value="Pasaporte">Pasaporte</option>
+                        </select>
+                        <div *ngIf="submitted && f['tipo_documento'].errors" class="invalid-feedback">
+                            <div *ngIf="f['tipo_documento'].errors['required']">Tipo de documento es requerido</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input
+                            type="text"
+                            formControlName="documento"
+                            class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['documento'].errors}"
+                            placeholder="Documento"
+                        />
+                        <div *ngIf="submitted && f['documento'].errors" class="invalid-feedback">
+                            <div *ngIf="f['documento'].errors['required']">Documento es requerido</div>
+                            <div *ngIf="f['documento'].errors['minlength']">El documento debe de contener mas de 7 digitos</div>
+                            <div *ngIf="f['documento'].errors['pattern']">El Documento no debe contener caracteres</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
+                    <div class="col">
+                        <input
+                            type="text"
+                            formControlName="celular"
+                            class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['celular'].errors}"
+                            placeholder="Celular"
+                        />
+                        <div *ngIf="submitted && f['celular'].errors" class="invalid-feedback">
+                            <div *ngIf="f['celular'].errors['required']">Celular es requerido</div>
+                            <div *ngIf="f['celular'].errors['minlength']">El Celular debe de contener minimo 10 digitos</div>
+                            <div *ngIf="f['celular'].errors['pattern']">El Celular no debe contener caracteres</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <input
+                            type="text"
+                            formControlName="telefono"
+                            class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['telefono'].errors}"
+                            placeholder="Telefono"
+                        />
+                        <div *ngIf="submitted && f['telefono'].errors" class="invalid-feedback">
+                            <div *ngIf="f['telefono'].errors['required']">Telefono es requerido</div>
+                            <div *ngIf="f['telefono'].errors['minlength']">El Telefono debe de contener minimo 10 digitos</div>
+                            <div *ngIf="f['telefono'].errors['pattern']">El Telefono no debe contener caracteres</div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group row mb-3">
+                    <div class="col">
+                        <input
+                            type="text"
+                            formControlName="email"
+                            class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['email'].errors}"
+                            placeholder="Correo Electronico"
+                        />
+                        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                            <div *ngIf="f['email'].errors['required']">Correo requerido</div>
+                            <div *ngIf="f['email'].errors['email']">Correo es invalido</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
+                    <div class="col">
+                        <input
+                            type="password"
+                            formControlName="password"
+                            class="form-control"
+                            placeholder="Contraseña"
+                            [ngClass]="{ 'is-invalid': submitted && f['password'].errors}"
+                        />
+                        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                            <div *ngIf="f['password'].errors['required']">Password es requerido</div>
+                            <div *ngIf="f['password'].errors['minlength']">La contrseña debe contener minimo 8 caracteres</div>
+                            <div *ngIf="f['password'].errors['maxlength']">La contrseña debe contener maximo 40 caracteres</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <div class="col">
+                        <input
+                            type="password"
+                            formControlName="comfirmPassword"
+                            class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f['comfirmPassword'].errors}"
+                            placeholder="Repetir Contraseña"
+                        />
+                        <div *ngIf="submitted && f['comfirmPassword'].errors" class="invalid-feedback">
+                            <div *ngIf="f['comfirmPassword'].errors['required']">Confirmar Password es requerido</div>
+                            <div *ngIf="f['comfirmPassword'].errors['matching']">Contraseña no coinciden </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group ">
+                        <input type="checkbox"
+                        formControlName="acceptTerms"
+                        class=" me-2 form-check-input"
+                        [ngClass]="{ 'is-invalid': submitted && f['acceptTerms'].errors}"
+                        />
+                        <label for="accepTerms" class="form-check-label text-muted">
+                            He leido y acepto los <a href="#">términos y condiciones </a>de la pagina
+                        </label>
+                        <div *ngIf="submitted && f['acceptTerms'].errors" class="invalid-feedback">
+                            Aceptar los terminos
+                        </div>
+                </div>
+                <div class="form-group row mb-4">
+                    <label for="inputEmail" class="col-form-label"></label>
+                    <div class="col">
+                        <button type="submit" class="enviar">Registrarme</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <img src="http://princesspetshop.com.co/img/foot.png" alt="" width="440px" class="foot">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

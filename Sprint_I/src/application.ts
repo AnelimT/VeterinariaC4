@@ -40,5 +40,7 @@ export class PetShopApplication extends BootMixin(
         nested: true,
       },
     };
+    registerAuthenticationStrategy(this, EstrategiaAdministrador)
+    this.component(AuthenticationComponent)
   }
 }

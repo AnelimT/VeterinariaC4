@@ -1,0 +1,37 @@
+.form{
+  background-color:#fff;
+  padding: 0 30px 30px 30px ;
+  z-index: 10;
+  border-radius: 20px;
+  max-width: 500px;
+}
+
+.textarea {
+  resize: none;
+}
+.enviar{
+  background-color:#9E446B;
+  z-index: 15;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: none;
+  border:none;
+  padding: 5px;
+  width: 100%;
+}
+.img-hd{
+  margin: auto;
+}
+.body{
+  background-color: #f4f7ffe5;
+  z-index: 5;
+  height: 100%;
+}
+.container-fluid{
+  background-image: url("http://princesspetshop.com.co/img/bg.png");
+  background-size: 400px;
+  background-repeat: repeat;
+}
+.foot{
+  border-radius: 5px;
+}

@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@loopback/authentication": "^8.0.0",
+    "@loopback/security": "^0.6.0",
+    "parse-bearer-token": "^1.0.1"
+  }
+}

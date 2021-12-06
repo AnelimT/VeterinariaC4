@@ -1,4 +1,4 @@
-import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Entity, hasMany, model, property} from '@loopback/repository';
 import {UsuarioAdministrador} from './usuario-administrador.model';
 
 @model()
@@ -59,10 +59,10 @@ export class Persona extends Entity {
   usuario: string;
 
   @property({
-    type: 'number',
-    required: true,
+    type: 'string',
+    required: false,
   })
-  password: number;
+  password: string;
 
   @property({
     type: 'string',

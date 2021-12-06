@@ -1,6 +1,6 @@
-import {Entity, model, property, belongsTo, hasMany} from '@loopback/repository';
-import {Petshop} from './petshop.model';
+import {belongsTo, Entity, hasMany, model, property} from '@loopback/repository';
 import {Pedido} from './pedido.model';
+import {Petshop} from './petshop.model';
 
 @model()
 export class Cliente extends Entity {
@@ -24,7 +24,7 @@ export class Cliente extends Entity {
   barrio: string;
 
   @belongsTo(() => Petshop)
-  petshopId: string;
+  petId: string;
 
   @hasMany(() => Pedido)
   pedidos: Pedido[];

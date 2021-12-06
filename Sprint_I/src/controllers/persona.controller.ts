@@ -1,29 +1,29 @@
+import {service} from '@loopback/core';
 import {
   Count,
   CountSchema,
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, HttpErrors, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
-import {Persona} from '../models';
+import {Llaves} from '../config/llaves';
+import {Credenciales, Persona} from '../models';
 import {PersonaRepository} from '../repositories';
+import {AutenticacionService} from '../services';
+const fetch =require('node-fetch');
 
 export class PersonaController {
   constructor(
     @repository(PersonaRepository)
     public personaRepository : PersonaRepository,
+    @service(AutenticacionService)
+    public servicioAutenticacion:AutenticacionService
   ) {}
 
   @post('/personas')
@@ -31,6 +31,27 @@ export class PersonaController {
     description: 'Persona model instance',
     content: {'application/json': {schema: getModelSchemaRef(Persona)}},
   })
+
+  async identificarPersona(
+    @requestBody() credenciales: Credenciales
+  ){
+    let p= await this.servicioAutenticacion.IdentificarPersona(credenciales.usuario, credenciales.llave)
+    if(p){
+      let token = this.servicioAutenticacion.GenerarTokenJWT(p)
+      return{
+        datos:{
+          nombre: p.nombre,
+          correo: p.email,
+          id: p.id
+        },
+        tk: token
+      }
+    }else{
+      throw new HttpErrors[401]("Datos invalidos")
+    }
+  }
+
+
   async create(
     @requestBody({
       content: {
@@ -44,7 +65,18 @@ export class PersonaController {
     })
     persona: Omit<Persona, 'id'>,
   ): Promise<Persona> {
-    return this.personaRepository.create(persona);
+    let password = this.servicioAutenticacion.GenerarClave();
+    let claveCifrada = this.servicioAutenticacion.CifrarClave(password);
+    persona.password = claveCifrada;
+    let p= await this.personaRepository.create(persona);
+    let destino = persona.email;
+    let asunto = 'Registro';
+    let contenido = `Hola ${persona.nombre}, el correo de contacto es ${persona.email} y la contraseña ${persona.password}`;
+    fetch(`http://${Llaves.urlServicioNotificaciones}/correos?destino=${destino}&asunto=${asunto}&contenido=${contenido}`)
+      .then((data: any)=>{
+          console.log(data);
+      })
+      return p;
   }
 
   @get('/personas/count')

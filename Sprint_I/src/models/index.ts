@@ -7,3 +7,4 @@ export * from './detalle-pedido.model';
 export * from './producto.model';
 export * from './categoria.model';
 export * from './tipo-mascota.model';
+export * from './credenciales.model';
